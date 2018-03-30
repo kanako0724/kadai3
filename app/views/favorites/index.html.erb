@@ -1,0 +1,14 @@
+<h1>お気に入り一覧</h1>
+
+<% @favorites.each do |fav| %>
+  <% writer = User.find(fav.picture.user_id) %>
+  <div class="content-wrapper">
+    <p><strong>name:</strong><%= writer.name %></p>
+    <p><strong>comment:</strong><%= fav.picture.comment %></p>
+    <div class="image-wrapper">
+      <%= image_tag (fav.picture.picture_url) %>
+      <%= link_to "お気に入り解除する",favorite_path(fav.id),method: :delete %>
+    </div>
+  </div>
+<% end %>
+  

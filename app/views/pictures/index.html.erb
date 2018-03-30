@@ -1,0 +1,15 @@
+<h1>Index</h1>
+<% @pictures.each do |pic| %>
+  <div class="content-wrapper">
+    <p class="name"><strong>user:</strong> <%= pic.user.name %></p>
+    <div class="image-wrapper">
+      <p><strong>comment:</strong> <%= pic.comment %></p>
+      <%= image_tag(pic.picture) %>
+    </div>
+    <%= link_to "詳細へ",picture_path(pic.id) %>
+    <% if pic.user == current_user %>
+      <%= link_to "edit",edit_picture_path(pic.id) %>
+      <%= link_to "delete",picture_path(pic.id),method: :delete,data:{confirm:"本当に削除していいですか？"} %>
+  　<% end %>
+　</div>
+<% end %>

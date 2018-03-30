@@ -1,0 +1,12 @@
+<div class="content-wrapper">
+  <h4><strong>comment:</strong><%= @picture.comment %></h4>
+  <h4><%= image_tag(@picture.picture) %></h4>
+  <%= link_to "一覧へ",pictures_path %>
+</div>
+<% unless @picture.user == current_user %>
+  <% if @favorite.present? %>
+    <%= link_to "お気に入り解除します",favorite_path(picture_id: @picture.id),method: :delete %>
+  <% else %>
+    <%= link_to "お気に入りする",favorites_path(picture_id: @picture.id),method: :post %>
+  <% end %>
+<% end %>
